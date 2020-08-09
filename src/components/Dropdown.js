@@ -24,15 +24,18 @@ const Dropdown = ({options, label, setSelected, selected}) => {
 
     useEffect(() => {
         const onBodyClick = (event) => {
-            if (ref.current.contains(event.target)) {
-                return
+            if (ref.current) {
+                if (ref.current.contains(event.target)) {
+                    return
+                } 
             }
+            
             setDropdown(false)
             }
         
-        document.body.addEventListener('click', onBodyClick)
-
-        return document.body.removeEventListener('click', onBodyClick)
+        document.body.addEventListener('click', e => onBodyClick(e))
+        
+        return document.body.removeEventListener('click', e => onBodyClick(e))
         
     }, [])
 

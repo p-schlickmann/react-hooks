@@ -3,6 +3,10 @@ import React, {useState} from 'react'
 import Accordion from './Accordion'
 import Search from './Search'
 import Dropdown from './Dropdown'
+import Translate from './Translate'
+import Nav from './Nav'
+import Header from './Header'
+
 
 export default () => {
 
@@ -22,14 +26,24 @@ export default () => {
 
     return (
         <div className='ui container'>
-            <Dropdown 
-            options={options} 
-            label="Select a color"
-            setSelected={setSelected}
-            selected={selected}
-            />
-            {/* <Search /> */}
-            {/* <Accordion items={items}/> */}
+            <Header />
+            <Nav path="/translate">
+                <Translate />
+            </Nav>
+            <Nav path="/">
+                <Accordion items={items}/>
+            </Nav>
+            <Nav path='/search'>
+                <Search />
+            </Nav>
+            <Nav path='/dropdown'>
+                <Dropdown 
+                options={options} 
+                label="Select a color"
+                setSelected={setSelected}
+                selected={selected}
+                />
+            </Nav>
         </div>
     )
 }
